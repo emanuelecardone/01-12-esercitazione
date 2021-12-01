@@ -133,7 +133,7 @@ postsArray.forEach((element, index, array) => {
     const currentPostMiddleImgSection = document.createElement('div');
     const currentPostDownBtnSection = document.createElement('div');
     const currentPostDownLikesSection = document.createElement('div');
-    currentPostUpImgSection.classList.add('d-flex', 'justify-content-center', 'align-items-center');
+    currentPostUpImgSection.classList.add('up_img_wrapper', 'd-flex', 'justify-content-center', 'align-items-center');
     currentPostUpSection.append(currentPostUpImgSection, currentPostUpTextSection);
     currentPostMiddleSection.append(currentPostMiddleTextSection, currentPostMiddleImgSection);
     currentPostDownSection.append(currentPostDownBtnSection, currentPostDownLikesSection);
@@ -149,14 +149,21 @@ postsArray.forEach((element, index, array) => {
     currentPostUpDate.classList.add('post_date');
     currentPostMiddleText.classList.add('text-center');
     currentPostMiddleImg.classList.add('middle_pic', 'w-100');
-    currentPostUpImg.src = media;
     currentPostMiddleImg.src = media;
     currentPostUpName.innerText = name;
     const fixedDate = dateFix(created);
     const [day, month, year] = fixedDate;
     currentPostUpDate.innerText = `${day} ${month}, ${year}`;
     currentPostMiddleText.innerText = content;
-    currentPostUpImgSection.appendChild(currentPostUpImg);
+    if(image !== null){
+        currentPostUpImg.src = image;
+        currentPostUpImgSection.appendChild(currentPostUpImg);
+    } else{
+        const fixedName = getFirstLetters(name);
+        const [fN, lN] = fixedName; 
+        currentPostUpImgSection.style.backgroundColor = "green";
+        currentPostUpImgSection.innerText = `${fN} ${lN}`;
+    }
     currentPostUpTextSection.append(currentPostUpName, currentPostUpDate);
     currentPostMiddleTextSection.appendChild(currentPostMiddleText);
     currentPostMiddleImgSection.appendChild(currentPostMiddleImg);
@@ -168,4 +175,17 @@ function dateFix (thisDate){
     return thisFixedDate;
 }
 
+// Funzione per generare una stringa contenente iniziali di nome e cognome dell'autore
+function getFirstLetters(thisName){
+    const thisFixedSpaceName = thisName.split(' ');
+
+    const thisFixedName = thisFixedSpaceName.map((element, index, array) => {
+        
+        const initialLetter = element[0];
+        return initialLetter;
+    });
+
+    return thisFixedName;
+    
+}
     
