@@ -114,14 +114,14 @@ postsArray.forEach((element, index, array) => {
 
     // Post container
     const currentPostContainer = document.createElement('div');
-    currentPostContainer.classList.add('post_main_wrapper', 'w-100', 'd-flex', 'flex-column');
+    currentPostContainer.classList.add('post_main_wrapper', 'w-100', 'd-flex', 'flex-column', 'py-3');
     currentSocialCol.appendChild(currentPostContainer);
 
     // Post sections
     const currentPostUpSection = document.createElement('div');
     const currentPostMiddleSection = document.createElement('div');
     const currentPostDownSection = document.createElement('div');
-    currentPostUpSection.classList.add('post_up_wrapper', 'd-flex', 'text-white');
+    currentPostUpSection.classList.add('post_up_wrapper', 'd-flex', 'align-items-center', 'text-white');
     currentPostMiddleSection.classList.add('post_middle_wrapper', 'd-flex', 'flex-column', 'text-white');
     currentPostDownSection.classList.add('post_down_wrapper', 'd-flex', 'justify-content-between', 'align-items-center', 'text-white');
     currentPostContainer.append(currentPostUpSection, currentPostMiddleSection, currentPostDownSection);
